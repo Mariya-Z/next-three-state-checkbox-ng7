@@ -1,0 +1,104 @@
+$gray-medium: #c6c6c6;
+$placeholder-gray: #888;
+$blue: #0460a9;
+$white: #fff;
+
+.cdk-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-transform: none;
+  width: 1px;
+  bottom: 0;
+  left: 0;
+  margin-left: 33%;
+}
+
+.checkbox-inner-container {
+  white-space: nowrap;
+  padding: 0 0 0 1.5em;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox {
+  input {
+    cursor: pointer;
+    height: 1px;
+    left: 1.25em;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+  }
+
+  &__icon {
+    background-color: $white;
+    background-color: var(--next-checkbox-white, $white);
+    color: $white;
+    color: var(--next-checkbox-white, $white);
+    border: 2px solid $blue;
+    border: 2px solid var(--next-checkbox-blue, $blue);
+    height: 1em;
+    width: 1em;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    overflow: hidden;
+    background-image: none;
+    transition: background-color linear 0.1s;
+
+    & svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  input:focus ~ &__icon,
+  input:active ~ &__icon {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  input.indeterminate ~ &__icon--ind {
+    background-color: $blue;
+    background-color: var(--next-checkbox-blur, $blue);
+    border-color: $blue;
+    border-color: var(--next-checkbox-blue, $blue);
+  }
+
+  input:checked ~ &__icon--ind {
+    display: none;
+  }
+
+  // To make it works in IE 11
+  input.indeterminate:checked ~ &__icon--ind {
+    display: block;
+  }
+
+  input:checked:enabled ~ &__icon {
+    background-color: $blue;
+    background-color: var(--next-checkbox-blue, $blue);
+    border-color: $blue;
+    border-color: var(--next-checkbox-blue, $blue);
+  }
+
+  input:disabled ~ &__icon {
+    border-color: $placeholder-gray;
+    border-color: var(--next-checkbox-placeholder-gray, $placeholder-gray);
+  }
+
+  input:checked:disabled ~ &__icon,
+  input.indeterminate:disabled ~ &__icon {
+    background-color: $gray-medium;
+    background-color: var(--next-checkbox-gray-medium, $gray-medium);
+  }
+}
